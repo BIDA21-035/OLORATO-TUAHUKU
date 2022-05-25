@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>Teatra</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    font-family: arial, sans-serif;
+    color: white;
+ }
+
+ .navbar{
+   background-color: black;
+    display:flex;
+    align-items: center;
+    padding:20px;
+    position: sticky;
+ }
+ .navbar h1{
+   color: white;
+ }
+
+ nav{
+    flex:1;
+    text-align: right;
+ }
+ 
+ nav ul{
+    display: inline-block;
+    list-style-type:none;
+ }
+ 
+ nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+ }
+
+ a{
+    text-decoration: none;
+    color:white;
+ }
+
+ .container{
+    max-width: 100%;
+    margin:0;
+    padding-left: 25px;
+    padding-right:25px;
+    background: black;
+    color:white;
+ }
+
+ .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color:white;
+ }
+
+ .col-2{
+    flex-basis: 50%;
+    min-width:300px;
+ }
+
+ .col-2 img{
+    max-width: 100%;
+    padding:50px 0;
+ }
+
+ .col-2 h1{
+    font-size:50px;
+    line-height: 60px;
+    margin: 25px 0;
+ }
+
+ .btn{
+    display: inline-block;
+    background: lawngreen;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+ }
+ .btn:hover{
+    background: 1s;
+ }
+
+ .header{
+    background: radial-gradient(#808080,#000000);
+    padding: 25px;
+ }
+
+ .header-row{
+    margin-top: 70px;
+    color:white;
+ }
+
+ .col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+ }
+ .col-3 img{
+    width: 100%;
+ }
+ .f-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+ }
+
+ .movie-list-container {
+   width: 100%;
+    flex:5;
+    padding: 50px 0px;
+    background: black;
+  }
+  
+  .movie-list-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .movie-list-title {
+      color:white;
+  }
+  
+  .movie-list {
+    display: flex;
+    align-items: center;
+    height: 400px;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+    width:100%;
+  }
+  
+  .movie-list-item {
+    position: relative;
+    width:25%;
+  }
+  
+  .movie-list-item:hover .movie-list-item-img {
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+  }
+  
+  .movie-list-item:hover .movie-list-item-title,
+  .movie-list-item:hover .movie-list-item-desc {
+    opacity: 1;
+  }
+  
+  .movie-list-item-img {
+    transition: all 1s ease-in-out;
+    width: 270px;
+    height: 300px;
+    object-fit: fill;
+    border-radius: 20px;
+  }
+  
+  .movie-list-item-title {
+    background-color: #333;
+    color: white;
+    padding: 0 10px;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .movie-list-item-desc {
+    background-color: #333;
+    color:white;
+    padding: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+    width: 230px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+ 
+ td, th {
+   text-align: left;
+   padding: 8px;
+ }
+
+ .menu-icon{
+    width: 25px;
+    display: none;
+    margin-left: 20px;
+ }
+
+ /*-----------------media query for menu ----------*/
+ @media only screen and (max-width:800px){
+
+   nav ul{
+      position:absolute;
+      top:70px;
+      left:0;
+      background: #333;
+      width:100%;
+      overflow: hidden;
+      transition: max-height 0.5s;
+   }
+
+   nav ul li{
+      display: block;
+      margin-right: 50px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+   }
+
+   nav ul li a {
+      color: white;
+   }
+
+   .menu-icon{
+      display: block;
+      cursor: pointer;
+   }
+ }
+/*-----------media query for less than 1000 screen size-------*/
+ @media only screen and(max-width:1000px) {
+   .movie-list-item{
+     flex-basis: 100%;
+   }
+ }
+ /*----------media query for less than 600 screen size-------*/
+ @media only screen and (max-width:600px){
+    .row{
+       text-align: center;
+    }
+    .col-2,.movie-list-item{
+       flex-basis:100%;
+    }
+ }
+    </style>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+            <div class="logo">
+                <img src="teatra-logos_white.png" width="110px">
+            </div>
+            <h1>Teatra Cinemas</h1>
+            <nav>
+                <ul id="MenuItems">
+                  <li><a href="TeatroCinemas.html">Home</a></li>
+                  <li><a href="moviesT.html">Movies</a></li>
+                  <li><a href="categories.html">Categories</a></li>
+                  <li><a href="newreleases.html">Upcoming</a></li>
+                  <li><a href="formie.html">Feedback</a></li>   
+                </ul>
+            </nav>
+            <img src="menu8.PNG" class="menu-icon" onclick="menutoggle()">
+       </div>
+     <div class="header">
+         <div class="row">
+             <div class="col-2">
+                 <h1>Spider Man:<br>No Way Home</h1>
+                 <p>With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man</p>
+             </div>
+             <div class="col-2">
+                 <img src="spider man.jpg">
+             </div>
+         </div>
+      </div>
+ <div class="container">
+  <div class="content-container">
+   <div class="movie-list-container">
+        <h1 class="movie-list-title">THIS WEEKS FAVOURITES!</h1>
+        <div class="movie-list-wrapper">
+            <div class="movie-list">
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="355.jpg">
+                    <span class="movie-list-item-title">The 355</span>
+                    <p class="movie-list-item-desc">When a top-secret weapon falls into mercenary hands, a wild card CIA agent joins forces with three international agents on a lethal mission to retrieve it, while staying a step ahead of a mysterious woman who's tracking their every move.</p>
+                    <p><strong>Genre:</strong> 
+                        Action, Comedy, Adventure            </p>
+                    <p><strong>Duration:</strong> 
+                        1h 52min            </p>
+                    <p><strong>Showing Times:</strong> 
+                        <strong class="text-danger">Fri 22nd Apr 2022</strong>
+                    </p>
+                    <p><strong>Age Restriction:</strong> 
+                        PG-13            </p>
+                    <p><strong>Directors:</strong>                    
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="hotel transylvania.jpg">
+                    <span class="movie-list-item-title">Hotel Transylvania 4: Transformania</span>
+                    <p class="movie-list-item-desc">After one experiment, Johnny turns into a monster and everyone else becomes human. Now it has to be seen whether they will be able to reverse this experiment.</p>
+                    <p><strong>Genre:</strong> 
+                        Action, Comedy, Adventure            </p>
+                      <p><strong>Duration:</strong> 
+                        1h 52min            </p>
+                      <p><strong>Showing Times:</strong> 
+                        <strong class="text-danger">Fri 22nd Apr 2022</strong>
+                      </p>
+                      <p><strong>Age Restriction:</strong> 
+                        PG-13            </p>
+                      <p><strong>Directors:</strong>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="scream.png">
+                    <span class="movie-list-item-title">Scream</span>
+                    <p class="movie-list-item-desc">25 years after a streak of brutal murders shocked the quiet town of Woodsboro, Calif., a new killer dons the Ghostface mask and begins targeting a group of teenagers to resurrect secrets from the town's deadly past.</p>
+                    <p><strong>Genre:</strong> 
+                        Action, Comedy, Adventure            </p>
+                      <p><strong>Duration:</strong> 
+                        1h 52min            </p>
+                      <p><strong>Showing Times:</strong> 
+                        <strong class="text-danger">Fri 22nd Apr 2022</strong>
+                      </p>
+                      <p><strong>Age Restriction:</strong> 
+                        PG-13            </p>
+                      <p><strong>Directors:</strong>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="jakass.jpg">
+                    <span class="movie-list-item-title">Jackass Forever</span>
+                    <p class="movie-list-item-desc">After 11 years, the Jackass crew is back for another crusade.</p>
+                    <p><strong>Genre:</strong> 
+                        Action, Comedy, Adventure            </p>
+                      <p><strong>Duration:</strong> 
+                        1h 52min            </p>
+                      <p><strong>Showing Times:</strong> 
+                        <strong class="text-danger">Fri 22nd Apr 2022</strong>
+                      </p>
+                      <p><strong>Age Restriction:</strong> 
+                        PG-13            </p>
+                      <p><strong>Directors:</strong>
+                        </p>
+                      </div>
+                </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<footer>
+    <table>
+        <tr>
+            <th>More Links</th>
+            <th>Socials</th>
+            <th>Reach Us</th>
+        </tr>
+        <tr>
+            <td>Sponsors</td>
+            <td>Facebook</td>
+            <td>Location:22,Lorem ipsum dolor, consectetur, adipisicing</td>
+        </tr>
+        <tr>
+            <td>Help</td>
+            <td>Twitter</td>
+            <td>Phone Number: 123(45678)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Instagram</td>
+            <td>Email: Teatra@gmail.com</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Whattsapp</td>
+            <td></td>
+        </tr>
+    </table>
+</footer>
+<!-----------------------js for toggle menu---------->
+     <script>
+         var MenuItems= document.getElementById("MenuItems");
+
+         MenuItems.style.maxHeight="0px";
+
+         function menutoggle(){
+             if(MenuItems.style.maxHeight=="0px")
+                 {
+                     MenuItems.style.maxHeight="200px"
+                 }
+
+            else {
+                MenuItems.style.maxHeight="0px";
+            }
+         }
+     </script>
+</body>
+</html>
